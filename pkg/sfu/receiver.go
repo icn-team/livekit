@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/go-logr/logr"
-	"github.com/pion/rtcp"
 	"github.com/icn-team/webrtc/v3"
+	"github.com/pion/rtcp"
 	"go.uber.org/atomic"
 
 	"github.com/livekit/livekit-server/pkg/utils"
@@ -553,6 +553,10 @@ func (w *WebRTCReceiver) forwardRTP(layer int32) {
 		if err == io.EOF {
 			return
 		}
+
+		// Encrypt packet only once using the first downtrack
+		dt := w.downTrackSpreader.GetDownTracks()
+		dt[0].EncryptRTP(pkt)
 
 		// svc packet, dispatch to correct tracker
 		spatialTracker := tracker

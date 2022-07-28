@@ -8,11 +8,11 @@ import (
 	"sync"
 	"time"
 
+	"github.com/icn-team/webrtc/v3"
 	"github.com/pion/rtcp"
 	"github.com/pion/rtp"
 	"github.com/pion/sdp/v3"
 	"github.com/pion/transport/packetio"
-	"github.com/icn-team/webrtc/v3"
 	"go.uber.org/atomic"
 
 	"github.com/livekit/protocol/livekit"
@@ -28,6 +28,7 @@ type TrackSender interface {
 	UpTrackLayersChange(availableLayers []int32)
 	UpTrackBitrateAvailabilityChange()
 	WriteRTP(p *buffer.ExtPacket, layer int32) error
+	EncryptRTP(p *buffer.ExtPacket) error
 	Close()
 	IsClosed() bool
 	// ID is the globally unique identifier for this Track.
@@ -503,6 +504,22 @@ func (d *DownTrack) WriteRTP(extPkt *buffer.ExtPacket, layer int32) error {
 	}
 
 	return err
+}
+
+// EncryptRTP encrypts a RTP Packet
+func (d *DownTrack) EncryptRTP(p *buffer.ExtPacket) error {
+	if !d.bound.Load() {
+		return nil
+	}
+
+	buf := make([]byte, len(p.Packet.Payload))
+
+	ciphertext, err := d.writeStream.EncryptRTP(buf, &p.Packet.Header, p.Packet.Payload)
+	if err != nil {
+		return err
+	}
+
+	return p.Packet.Unmarshal(ciphertext)
 }
 
 // WritePaddingRTP tries to write as many padding only RTP packets as necessary
