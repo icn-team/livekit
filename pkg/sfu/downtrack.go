@@ -12,7 +12,7 @@ import (
 	"github.com/pion/rtp"
 	"github.com/pion/sdp/v3"
 	"github.com/pion/transport/packetio"
-	"github.com/pion/webrtc/v3"
+	"github.com/icn-team/webrtc/v3"
 	"go.uber.org/atomic"
 
 	"github.com/livekit/protocol/livekit"

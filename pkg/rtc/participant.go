@@ -9,7 +9,7 @@ import (
 
 	lru "github.com/hashicorp/golang-lru"
 	"github.com/pion/rtcp"
-	"github.com/pion/webrtc/v3"
+	"github.com/icn-team/webrtc/v3"
 	"github.com/pkg/errors"
 	"go.uber.org/atomic"
 	"google.golang.org/protobuf/proto"

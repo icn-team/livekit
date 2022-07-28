@@ -3,7 +3,7 @@ package rtc
 import (
 	"fmt"
 
-	"github.com/pion/webrtc/v3"
+	"github.com/icn-team/webrtc/v3"
 	"google.golang.org/protobuf/proto"
 
 	"github.com/livekit/protocol/livekit"

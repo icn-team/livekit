@@ -11,7 +11,7 @@ import (
 	"github.com/livekit/protocol/auth"
 	"github.com/livekit/protocol/livekit"
 	"github.com/livekit/protocol/logger"
-	webrtc "github.com/pion/webrtc/v3"
+	webrtc "github.com/icn-team/webrtc/v3"
 )
 
 type FakeLocalParticipant struct {

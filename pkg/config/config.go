@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/mitchellh/go-homedir"
-	"github.com/pion/webrtc/v3"
+	"github.com/icn-team/webrtc/v3"
 	"github.com/pkg/errors"
 	"github.com/urfave/cli/v2"
 	"gopkg.in/yaml.v3"

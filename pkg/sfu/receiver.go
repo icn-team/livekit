@@ -9,7 +9,7 @@ import (
 
 	"github.com/go-logr/logr"
 	"github.com/pion/rtcp"
-	"github.com/pion/webrtc/v3"
+	"github.com/icn-team/webrtc/v3"
 	"go.uber.org/atomic"
 
 	"github.com/livekit/livekit-server/pkg/utils"

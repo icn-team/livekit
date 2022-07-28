@@ -13,7 +13,7 @@ import (
 	"github.com/pion/interceptor/pkg/gcc"
 	"github.com/pion/interceptor/pkg/twcc"
 	"github.com/pion/sdp/v3"
-	"github.com/pion/webrtc/v3"
+	"github.com/icn-team/webrtc/v3"
 	"go.uber.org/atomic"
 
 	"github.com/livekit/protocol/livekit"
@@ -674,7 +674,7 @@ func extractDTLSRole(desc *sdp.SessionDescription) webrtc.DTLSRole {
 	// DTLS Role.
 	//
 	// But, ORTC has this - https://github.com/w3c/ortc/issues/167#issuecomment-69409953
-	// and pion/webrtc follows that (https://github.com/pion/webrtc/blob/e071a4eded1efd5d9b401bcfc4efacb3a2a5a53c/dtlstransport.go#L269)
+	// and pion/webrtc follows that (https://github.com/icn-team/webrtc/blob/e071a4eded1efd5d9b401bcfc4efacb3a2a5a53c/dtlstransport.go#L269)
 	//
 	// So if remote is ice-lite, pion will use DTLSRoleServer when answering
 	// while browsers pick DTLSRoleClient.
